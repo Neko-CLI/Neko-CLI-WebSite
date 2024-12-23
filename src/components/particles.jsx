@@ -58,6 +58,12 @@ const Particles = ({
   const canvasSize = useRef({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
+  const clearContext = () => {
+    if (context.current) {
+      context.current.clearRect(0, 0, canvasSize.current.w, canvasSize.current.h);
+    }
+  };
+
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d");
@@ -154,12 +160,6 @@ const Particles = ({
     }
   };
 
-  const clearContext = () => {
-    if (context.current) {
-      context.current.clearRect(0, 0, canvasSize.current.w, canvasSize.current.h);
-    }
-  };
-
   const drawParticles = () => {
     clearContext();
     const particleCount = quantity;
@@ -181,7 +181,7 @@ const Particles = ({
       const edge = [
         circle.x + circle.translateX - circle.size,
         canvasSize.current.w - circle.x - circle.translateX - circle.size,
-        circle.y + circle.translateY - circle.size, 
+        circle.y + circle.translateY - circle.size,
         canvasSize.current.h - circle.y - circle.translateY - circle.size,
       ];
       const closestEdge = edge.reduce((a, b) => Math.min(a, b));
@@ -197,11 +197,9 @@ const Particles = ({
       circle.x += circle.dx + vx;
       circle.y += circle.dy + vy;
       circle.translateX +=
-        (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
-        ease;
+        (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) / ease;
       circle.translateY +=
-        (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
-        ease;
+        (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) / ease;
 
       drawCircle(circle, true);
 
@@ -220,9 +218,9 @@ const Particles = ({
   };
 
   return (
-    (<div className={className} ref={canvasContainerRef} aria-hidden="true">
+    <div className={className} ref={canvasContainerRef} aria-hidden="true">
       <canvas ref={canvasRef} className="size-full" />
-    </div>)
+    </div>
   );
 };
 
