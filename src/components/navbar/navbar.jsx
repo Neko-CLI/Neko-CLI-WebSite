@@ -25,7 +25,7 @@ export default function NavBar() {
 
     const menuItems = [
         { name: 'Docs', icon: bookIcon, link: 'https://neko-cli.unstackss.dev/docs' },
-        { name: 'Github', icon: shareIcon, link: 'https://neko-cli.unstackss.dev/docs' },
+        { name: 'Github', icon: shareIcon, link: 'https://github.com/Neko-CLI/Neko-CLI-WebSite' },
         { name: 'Discord', icon: shareIcon, link: 'https://nekods.unstackss.dev' },
         { name: 'Donate', icon: confettiIcon, link: 'https://www.paypal.com/paypalme/UnStackss?country.x=IT&locale.x=en_US' }
     ];
