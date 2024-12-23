@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Player } from '@lordicon/react';
 
 export default function Icon({ name, size, handleAnimate, Icon, color }) {

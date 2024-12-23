@@ -3,12 +3,8 @@ import {
     Navbar,
     NavbarBrand,
     NavbarContent,
-    NavbarItem,
     NavbarMenuToggle,
     NavbarMenu,
-    NavbarMenuItem,
-    Link,
-    Button,
     Image,
 } from "@nextui-org/react";
 

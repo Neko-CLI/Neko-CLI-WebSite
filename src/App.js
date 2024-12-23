@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import { Button, NextUIProvider } from '@nextui-org/react';
+import { NextUIProvider } from '@nextui-org/react';
 import NavBar from './components/navbar/navbar';
 import Header from './components/header/header';
 import Particles from './components/particles';

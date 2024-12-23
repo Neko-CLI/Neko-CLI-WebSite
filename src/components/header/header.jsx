@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Code, Image, Link, Tab, Tabs } from "@nextui-org/react";
-import { CopyIcon } from "../../static/icons/copy";
 import CustomCode from "../code";
 import Feature from "./feature";
 import Sponsor from "../sponsor";
