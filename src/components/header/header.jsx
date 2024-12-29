@@ -5,15 +5,15 @@ import Feature from "./feature";
 import Sponsor from "../sponsor";
 import Icon from "../icon";
 
-import logoCodeRabbit from '../../static/logos/codeRabbit.png'
+import logoCodeRabbit from '../../../static/logos/codeRabbit.png'
 
-import chartIcon from '../../static/animated/chartIcon.json';
-import categoryIcon from '../../static/animated/categoryIcon.json';
-import compareIcon from '../../static/animated/compareIcon.json';
-import fileIcon from '../../static/animated/fileIcon.json';
+import chartIcon from '../../../static/animated/chartIcon.json';
+import categoryIcon from '../../../static/animated/categoryIcon.json';
+import compareIcon from '../../../static/animated/compareIcon.json';
+import fileIcon from '../../../static/animated/fileIcon.json';
 import PieChart from "../pieChart";
 import { Marquee } from "../marquee";
-import { HeartIcon } from "../../static/icons/heart";
+import { HeartIcon } from "../../../static/icons/heart";
 
 export default function Header() {
     const [isHovered, setIsHovered] = useState(false);
@@ -35,6 +35,8 @@ export default function Header() {
             },
         ],
     });
+
+    const [sponsors, setSponsors] = useState([]);
 
     useEffect(() => {
         const fetchDownloads = async () => {
@@ -75,14 +77,26 @@ export default function Header() {
             }
         };
 
+        const fetchSponsors = async () => {
+            try {
+                const sponsorsData = await fetch(
+                    "https://raw.githubusercontent.com/Neko-CLI/SponsorsJson/refs/heads/main/sponsors.json"
+                ).then((res) => res.json());
+                setSponsors(sponsorsData);
+            } catch (error) {
+                console.error("Error fetching sponsors data:", error);
+            }
+        };
+
         fetchDownloads();
+        fetchSponsors();
     }, []);
 
     const formatNumber = (num) => {
         if (num >= 1e6) return (num / 1e6).toFixed(1) + "M";
         if (num >= 1e3) return (num / 1e3).toFixed(1) + "k";
         return num.toString();
-    }
+    };
 
     return (
         <header className="w-full flex justify-between flex-col items-center">
@@ -213,17 +227,17 @@ export default function Header() {
                 <h1 className="text-xl font-bold m-0 text-primary-300 my-5">Our sponsors</h1>
                 <div className="flex flex-row max-w-full gap-10 justify-center items-center mx-auto md:mx-20 xl:mx-44 flex-wrap w-full md:w-[calc(100%-5rem*2)] xl:w-[calc(100%-11rem*2)]">
                     <Marquee reverse pauseOnHover className="[--duration:30s] [--gap:2.5rem]">
-                        <Sponsor iconURL={logoCodeRabbit} name='CodeRabbit' URL='https://www.coderabbit.ai/' iconOnly={true} />
-                        <Sponsor iconURL='https://i.imgur.com/ki2Qpld.png' name='DBD Team' color='#23aae1' URL='https://bit.dev/' iconOnly={false} />
-                        <Sponsor iconURL='https://i.imgur.com/7cHxAb6.png' name='Sanity' URL='https://www.sanity.io/' iconOnly={true} />
-                        <Sponsor iconURL='https://i.imgur.com/5EgKxHi.png' name='VITE' color='#ffcb23' URL='https://vite.dev/' iconOnly={false} />
-                        <Sponsor iconURL='https://i.imgur.com/p7np28O.png' name='BIT.DEV' color='#7f38ff' URL='https://bit.dev/' iconOnly={false} />
-                        <Sponsor iconURL='https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/636e0b5061df29d55a92d945_full_logo_blurple_RGB.svg' name='Discord' URL='https://discord.com/' iconOnly={true} />
-                        <Sponsor iconURL='https://www.intel.com/content/dam/logos/intel-header-logo.svg' name='Intel' URL='https://intel.com/' width={75} iconOnly={true} />
-                        <Sponsor iconURL='https://evercraft.it/assets/logo_slim-70b912dc.png' name='Evercraft' URL='https://evercraft.it/' width={100} iconOnly={true} />
-                        <Sponsor iconURL='https://imgur.com/R03hly6.png' name='FullStack Italia' color='#fff' URL='https://t.me/fullstack' iconOnly={false} />
-                        <Sponsor iconURL='https://billing.evoshosting.com/templates/lagom2/assets/img/logo/logo_big_inverse.344460724.png' name='Evos Hosting' URL='https://evoshosting.com/' width={100} iconOnly={true} />
-                        <Sponsor iconURL='https://i.imgur.com/hYmzuDE.png' name='Unix Developmet' URL='https://evoshosting.com/' color='#7d00c6' width={100} iconOnly={false} />
+                        {sponsors.map((sponsor, index) => (
+                            <Sponsor
+                                key={index}
+                                iconURL={sponsor.logo}
+                                name={sponsor.name}
+                                URL={sponsor.link}
+                                color={`#${sponsor.color}`}
+                                width={sponsor.iconSize}
+                                iconOnly={sponsor.iconOnly}
+                            />
+                        ))}
                         <Button color="primary" variant="flat" className="font-bold text-primary" as={Link} href="mailto:nekoclisupp@gmail.com?cc=thomasgarau2002@gmail.com&subject=Proposal%20Sponsor%20Neko-CLI%20x%20%5Bname%20here%5D&body=Dear...%20%5Btext%20here%5D">
                             Become a sponsor
                             <HeartIcon />
