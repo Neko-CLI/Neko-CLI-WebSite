@@ -1,4 +1,3 @@
-// tailwind.config.js
 const { nextui } = require("@nextui-org/react");
 
 /** @type {import('tailwindcss').Config} */
@@ -24,10 +23,28 @@ module.exports = {
           to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            h1: {
+              fontSize: '40px',
+              fontWeight: '700',
+            },
+            h2: {
+              fontSize: '24px',
+              fontWeight: '600',
+            },
+            a: {
+              marginLeft:'5px',
+            }
+          },
+        },
+      },
     },
   },
   darkMode: "class",
   plugins: [
+    require('@tailwindcss/typography'),
     nextui({
       defaultTheme: "dark",
       defaultExtendTheme: "dark",
