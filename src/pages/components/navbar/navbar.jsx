@@ -27,8 +27,9 @@ export default function NavBar({ selectedLink, setSelectedLink }) {
 
     const menuItems = [
         { name: 'Docs', link: '/docs', hasAccordion: true, accordion: <PageSelector selectedLink={selectedLink} setSelectedLink={setSelectedLink} pages={pages} isNavBar={true} /> },
+        { name: 'Reviews', link: '/reviews', hasAccordion: true, accordion: <PageSelector selectedLink={selectedLink} setSelectedLink={setSelectedLink} pages={pages} isNavBar={true} /> },
         { name: 'Github', link: 'https://github.com/Neko-CLI/Neko-CLI-WebSite' },
-        { name: 'Discord', link: 'https://nekods.unstackss.dev' },
+        { name: 'Discord', link: 'https://ds.neko-cli.com' },
         { name: 'Donate', link: 'https://www.paypal.com/paypalme/UnStackss?country.x=IT&locale.x=en_US' }
     ];
 

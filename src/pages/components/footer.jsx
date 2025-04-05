@@ -1,7 +1,16 @@
 export default function Footer({ className }) {
     return (
-        <p className={`w-full text-center relative bottom-0 p-4 text-primary-300 font-semibold ${className}`}>
-            <a href="https://app.copyrighted.com/website/Wp4Pu4gJh3O2ZRiC">© Neko-CLI</a>. All rights reserved. (ID) MZSFLUH3
-        </p>
-    )
+        <footer className={`w-full text-center text-xs text-primary-400 font-medium py-2 ${className}`}>
+            <a
+                href="https://app.copyrighted.com/website/8XBdQv5I7h8pMvpP/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+            >
+                © 2024–2025 Neko-CLI
+            </a>{' '}
+            · All rights reserved<br />
+            <span className="text-[10px] text-primary-500 tracking-wide">Business ID: MZSFLUH3</span>
+        </footer>
+    );
 }

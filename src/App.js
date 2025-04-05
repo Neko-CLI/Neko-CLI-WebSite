@@ -12,6 +12,7 @@ import { pages } from './pages/docs/pages/pages';
 import { KBarProvider } from 'kbar';
 
 import { actions } from './pages/components/kbar';
+import Reviews from './pages/reviews/reviews';
 
 function App() {
   const navigate = useNavigate();
@@ -58,6 +59,9 @@ function App() {
           </div>
           <div className={`${location.pathname.startsWith('/docs') ? 'block' : 'hidden overflow-hidden max-h-full'} absolute w-full`}>
             <Docs selectedLink={selectedLink} setSelectedLink={setSelectedLink} />
+          </div>
+          <div className={`${location.pathname.startsWith('/reviews') ? 'block' : 'hidden overflow-hidden max-h-full'} absolute w-full`}>
+            <Reviews selectedLink={selectedLink} setSelectedLink={setSelectedLink} />
           </div>
         </div>
       </KBarProvider>
