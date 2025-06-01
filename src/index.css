@@ -28,3 +28,54 @@ body {
 .appContainer {
   overflow-x: hidden;
 }
+
+@keyframes snakeBorder {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    border-top-color: white;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  25% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    border-top-color: white;
+    border-right-color: white;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    border-top-color: white;
+    border-right-color: white;
+    border-bottom-color: white;
+    border-left-color: transparent;
+  }
+  75% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    border-top-color: white;
+    border-right-color: white;
+    border-bottom-color: white;
+    border-left-color: white;
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    border-top-color: white;
+    border-right-color: white;
+    border-bottom-color: white;
+    border-left-color: white;
+  }
+}
+
+.animated-border {
+  animation: snakeBorder 4s linear infinite;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Se vuoi un bordo circolare */
+  border: 5px solid transparent; /* Base per l'animazione */
+  pointer-events: none; /* Non deve interferire con il click sul link */
+}

@@ -111,8 +111,6 @@ export default function Reviews() {
           Write a Review
         </a>
       </div>
-
-      {/* Footer */}
       <Footer className="mt-80" />
     </div>
   );

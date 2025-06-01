@@ -41,22 +41,22 @@ export const updatesPage = {
         <section id="author">
                 <User
                     avatarProps={{
-                        src: "https://i.ibb.co/sp2J0s99/image.png",
+                        src: "https://i.ibb.co/zVXk5wqg/image.png",
                     }}
                     description={
                         <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <Link isExternal href="https://github.com/StrayVibes" size="sm">
-                                @StrayVibes
+                            <Link isExternal href="https://github.com/Frig1" size="sm">
+                                @Frig1
                             </Link>
                             <Chip
                                 color="danger"
                                 variant="bordered"
-                                size="sm" // Make the chip slightly smaller to fit better in description
+                                size="sm"
                                 startContent={
                                     <img
                                         src="https://img.icons8.com/glyph-neue/64/F25081/user-shield.png"
                                         alt="user-shield"
-                                        style={{ width: 14, height: 14 }} // Adjust icon size
+                                        style={{ width: 14, height: 14 }}
                                     />
                                 }
                             >
@@ -64,10 +64,10 @@ export const updatesPage = {
                             </Chip>
                         </span>
                     }
-                    name="Thomas Garau"
+                    name="Elia Frigerio"
                 />
                 <p style={{ fontSize: '0.9em', color: '#666', marginTop: '8px' }}>
-                    Published on June 1, 2025 at 11:20 AM
+                    Published on June 1, 2025 at 13:40 AM
                 </p>
             </section>
             <section id="updates">

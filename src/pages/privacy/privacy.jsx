@@ -1,8 +1,7 @@
-import React from 'react';
-
+import Footer from "../components/footer";
 export default function PrivacyPolicy() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-5xl rounded-2xl my-8 bg-gray-900 shadow-xl">
+    <div className="container mx-auto px-4 py-12 max-w-5xl rounded-2xl my-8">
       <h1 className="text-5xl font-extrabold mb-8 text-center text-white tracking-tight">Privacy Policy ✨</h1>
 
       <p className="text-md text-gray-300 mb-10 text-center">Last updated: June 1, 2025 🗓️</p>
@@ -354,6 +353,7 @@ export default function PrivacyPolicy() {
       <p className="text-sm text-gray-400 mt-12 text-center">
         Disclaimer: This is a standard privacy policy draft. It does not substitute professional legal advice. We strongly recommend consulting with a privacy law attorney to ensure your policy complies with all applicable laws and regulations for your business and jurisdiction (e.g., GDPR, CCPA, etc.). ⚠️⚖️
       </p>
+      <Footer className="mt-5" />
     </div>
   );
 }

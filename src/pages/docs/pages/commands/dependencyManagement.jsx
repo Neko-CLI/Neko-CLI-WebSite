@@ -32,12 +32,12 @@ export const dependencyManagementPage = {
                             <Chip
                                 color="danger"
                                 variant="bordered"
-                                size="sm" // Make the chip slightly smaller to fit better in description
+                                size="sm"
                                 startContent={
                                     <img
                                         src="https://img.icons8.com/glyph-neue/64/F25081/user-shield.png"
                                         alt="user-shield"
-                                        style={{ width: 14, height: 14 }} // Adjust icon size
+                                        style={{ width: 14, height: 14 }}
                                     />
                                 }
                             >
