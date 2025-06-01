@@ -16,7 +16,6 @@ import Reviews from './pages/reviews/reviews';
 import PrivacyPolicy from './pages/privacy/privacy';
 import TermsOfServices from './pages/tos/tos';
 import CookieConsentBanner from './pages/components/cookiesbanner';
-import AnalyticsLogs from './pages/components/alogs';
 
 const GA_MEASUREMENT_ID = 'G-337952744';
 
@@ -121,7 +120,6 @@ function App() {
             <TermsOfServices />
           </div>
         </div>
-        <AnalyticsLogs />
         <CookieConsentBanner />
       </KBarProvider>
     </NextUIProvider>

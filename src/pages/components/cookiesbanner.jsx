@@ -39,7 +39,6 @@ export default function CookieConsentBanner() {
     ];
 
     useEffect(() => {
-        // Prevent the banner from showing on privacy or terms of service pages
         if (location.pathname.startsWith('/privacy') || location.pathname.startsWith('/tos')) {
             return;
         }
