@@ -1,6 +1,7 @@
 import { introductionPage } from "./guide/introduction";
 import { linuxInstallation} from "./guide/linuxInstallation";
 import { termuxInstallation} from "./guide/termuxInstallation";
+import { ishInstallation} from "./guide/iSHInstallation";
 import { projectInitializationPage } from "./commands/projectInitialization";
 import { scriptManagementPage } from "./commands/scriptManagement";
 import { dependencyManagementPage } from "./commands/dependencyManagement";
@@ -15,7 +16,8 @@ export const pages = [
         links: [
             "Introduction",
             "Linux Installation",
-            "Termux Installation"
+            "Termux Installation",
+            "IOS Installation"
         ],
     },
     {
@@ -37,6 +39,7 @@ export const componentsMap = {
         Introduction: introductionPage,
         Linux_Installation: linuxInstallation,
         Termux_Installation: termuxInstallation,
+        IOS_Installation: ishInstallation
     },
     Commands: {
         Initialization: projectInitializationPage,

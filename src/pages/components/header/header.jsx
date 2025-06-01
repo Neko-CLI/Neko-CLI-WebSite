@@ -42,8 +42,9 @@ export default function Header() {
       setOs("Windows");
     } else if (userAgent.includes("Mac")) {
       setOs("Mac");
+    } else if (userAgent.includes("iPhone") || userAgent.includes("iPad")) {
+      setOs("iOS");
     } else if (userAgent.includes("Android")) {
-      // Added Android detection
       setOs("Android");
     } else if (userAgent.includes("Linux")) {
       setOs("Linux");
@@ -133,6 +134,13 @@ export default function Header() {
     case "Android":
       buttonText = "Install on Termux";
       buttonHref = "./docs/guide/termux-installation";
+      buttonColor = "primary";
+      buttonVariant = "ghost";
+      showFileIcon = false;
+      break;
+    case "iOS":
+      buttonText = "Install on iSH";
+      buttonHref = "./docs/guide/ish-installation";
       buttonColor = "primary";
       buttonVariant = "ghost";
       showFileIcon = false;
