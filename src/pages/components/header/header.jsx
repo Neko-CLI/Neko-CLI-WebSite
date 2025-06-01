@@ -140,7 +140,7 @@ export default function Header() {
       break;
     case "iOS":
       buttonText = "Install on iSH";
-      buttonHref = "./docs/guide/ish-installation";
+      buttonHref = "./docs/guide/ios-installation";
       buttonColor = "primary";
       buttonVariant = "ghost";
       showFileIcon = false;
