@@ -12,6 +12,9 @@ module.exports = {
       animation: {
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+        'pop-in': 'popIn 0.6s ease-out forwards',
+        'gradient-pulse': 'gradientPulse 3s ease infinite',
       },
       keyframes: {
         marquee: {
@@ -21,6 +24,18 @@ module.exports = {
         "marquee-vertical": {
           from: { transform: "translateY(0)" },
           to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        popIn: {
+          '0%': { opacity: '0', transform: 'scale(0.8)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        gradientPulse: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
         },
       },
       typography: {
