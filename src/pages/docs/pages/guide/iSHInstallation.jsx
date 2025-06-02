@@ -3,7 +3,7 @@ import VideoEmbed from "../../../components/videoEmbed";
 import { User, Link, Chip } from "@heroui/react";
 
 export const ishInstallation = {
-  title: "Neko-CLI for iSH 🍏",
+  title: "Neko-CLI for iSH 🍏 (IOS)",
   sections: [
     {
       id: "quick-start",

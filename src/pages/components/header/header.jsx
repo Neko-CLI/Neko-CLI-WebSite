@@ -120,26 +120,28 @@ export default function Header() {
         "https://github.com/UnStackss/Neko-CLI/releases/download/0.0.1/Neko-CLI-Installer.exe";
       break;
     case "Mac":
-      buttonText = "Download Neko-CLI-Installer.dmg";
-      buttonHref =
-        "https://github.com/UnStackss/Neko-CLI/releases/download/0.0.1/Neko-CLI-Installer.dmg";
+      buttonText = "Install on IOS";
+      buttonHref = "./docs/guide/ios-installation";
+      buttonColor = "primary";
+      buttonVariant = "ghost";
+      showFileIcon = false;
       break;
     case "Linux":
-      buttonText = "Install from command line";
+      buttonText = "Install on Linux";
       buttonHref = "./docs/linux-installation";
       buttonColor = "danger";
       buttonVariant = "ghost";
       showFileIcon = false;
       break;
     case "Android":
-      buttonText = "Install on Termux";
+      buttonText = "Install on Android";
       buttonHref = "./docs/guide/termux-installation";
       buttonColor = "primary";
       buttonVariant = "ghost";
       showFileIcon = false;
       break;
     case "iOS":
-      buttonText = "Install on iSH";
+      buttonText = "Install on IOS";
       buttonHref = "./docs/guide/ios-installation";
       buttonColor = "primary";
       buttonVariant = "ghost";
@@ -755,7 +757,7 @@ export default function Header() {
                       }}
                     />
                     <span>
-                      1Gb/s BW
+                      1Gb/s Bwth
                       <br />
                       (max 10Gb/s)
                     </span>
@@ -1016,7 +1018,7 @@ export default function Header() {
                         marginRight: "8px",
                       }}
                     />
-                    <span>10Gb/s BW</span>
+                    <span>10Gb/s Bwth</span>
                   </li>
                   <li style={{ display: "flex", alignItems: "center" }}>
                     <Avatar

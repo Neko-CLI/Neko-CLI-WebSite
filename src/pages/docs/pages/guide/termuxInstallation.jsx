@@ -3,7 +3,7 @@ import VideoEmbed from "../../../components/videoEmbed";
 import {User, Link, Chip} from "@heroui/react";
 
 export const termuxInstallation = {
-    title: "Neko-CLI for Termux 📱",
+    title: "Neko-CLI for Termux 📱 (Android)",
     sections: [
         {
             id: "quick-start",
