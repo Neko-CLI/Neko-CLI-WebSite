@@ -36,6 +36,8 @@ export default function Header() {
 
   const [os, setOs] = useState("unknown");
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const userAgent = window.navigator.userAgent;
     if (userAgent.includes("Win")) {
@@ -51,6 +53,10 @@ export default function Header() {
     } else {
       setOs("unknown");
     }
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
 
     const fetchDownloads = async () => {
       try {
@@ -99,6 +105,14 @@ export default function Header() {
 
     fetchDownloads();
     fetchSponsors();
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   const formatNumber = (num) => {
@@ -186,7 +200,36 @@ export default function Header() {
             </div>
           </div>
         </div>
-
+        {!isMobile && (
+          <div
+            style={{
+              position: "fixed",
+              top: "80px",
+              left: "10px",
+              zIndex: 9999,
+              width: "160px",
+              height: "600px",
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              alt="NordVPN Banner"
+              src="https://i.imgur.com/ZJwdz5M.png"
+              className="cursor-pointer"
+              style={{
+                width: "160px",
+                height: "600px",
+                display: "block",
+              }}
+              onClick={() =>
+                window.open(
+                  "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=124821&url_id=902",
+                  "_blank"
+                )
+              }
+            />
+          </div>
+        )}
         <div className="flex flex-col gap-8 items-center -order-1 2xl:order-2 2xl:w-auto w-full text-center">
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold m-0 text-primary mb-2">
