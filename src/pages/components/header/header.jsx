@@ -37,8 +37,17 @@ export default function Header() {
   const [os, setOs] = useState("unknown");
 
   const [isMobile, setIsMobile] = useState(false);
+  const [showBanner, setShowBanner] = useState(false);
+
+  
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    
     const userAgent = window.navigator.userAgent;
     if (userAgent.includes("Win")) {
       setOs("Windows");
@@ -53,10 +62,6 @@ export default function Header() {
     } else {
       setOs("unknown");
     }
-
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
 
     const fetchDownloads = async () => {
       try {
@@ -106,7 +111,16 @@ export default function Header() {
     fetchDownloads();
     fetchSponsors();
 
-    checkMobile();
+    
+
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+
+    if (dayOfWeek === 3 || dayOfWeek === 6) {
+      setShowBanner(true);
+    } else {
+      setShowBanner(false);
+    }
 
     window.addEventListener("resize", checkMobile);
 
@@ -200,7 +214,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-        {!isMobile && (
+        {!isMobile && showBanner && (
           <div
             style={{
               position: "fixed",
