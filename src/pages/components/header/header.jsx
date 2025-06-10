@@ -39,15 +39,13 @@ export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [showBanner, setShowBanner] = useState(false);
 
-  
-
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
     checkMobile();
-    
+
     const userAgent = window.navigator.userAgent;
     if (userAgent.includes("Win")) {
       setOs("Windows");
@@ -110,8 +108,6 @@ export default function Header() {
 
     fetchDownloads();
     fetchSponsors();
-
-    
 
     const today = new Date();
     const dayOfWeek = today.getDay();
@@ -292,32 +288,10 @@ export default function Header() {
 
           <div className="flex flex-col items-center">
             <h1 className="text-xl font-bold m-0 text-primary-300 my-5">
-              Install Neko by line
+              Neko CLI
+              <br />
+              The smarter way to manage Node.js.
             </h1>
-            <Tabs aria-label="Options" variant="underlined">
-              <Tab key="npm" title="npm">
-                <h1 className="text-xl font-bold m-0 text-primary-300 mb-2">
-                  Neko-CLI Installation with npm
-                </h1>
-                <p className="text-base text-gray-400 mb-1">
-                  Run in your terminal:
-                </p>
-                <Code>npm i -g neko-cli</Code>
-                <p className="text-base text-gray-400 mb-1">To verify run:</p>
-                <Code>neko help</Code>
-              </Tab>
-              <Tab key="yarn" title="yarn">
-                <h1 className="text-xl font-bold m-0 text-primary-300 mb-2">
-                  Neko-CLI Installation with yarn
-                </h1>
-                <p className="text-base text-gray-400 mb-1">
-                  Run in your terminal:
-                </p>
-                <Code>yarn global add neko-cli</Code>
-                <p className="text-base text-gray-400 mb-1">To verify run:</p>
-                <Code>neko help</Code>
-              </Tab>
-            </Tabs>
           </div>
         </div>
 
