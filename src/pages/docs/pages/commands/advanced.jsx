@@ -56,8 +56,8 @@ export const advancedToolsPage = {
         </p>
         <Code fullWidth>meow stale</Code>
         <p>
-          This is crucial for preventing **security vulnerabilities** and
-          ensuring your project uses **well-supported packages**. Keep your
+          This is crucial for preventing <strong>security vulnerabilities</strong> and
+          ensuring your project uses <strong>well-supported packages</strong>. Keep your
           project vibrant and secure! ✨🛡️
         </p>
       </section>
