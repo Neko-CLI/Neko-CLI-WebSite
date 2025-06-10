@@ -17,7 +17,7 @@ import {
 import React, { useState } from 'react';
 
 export const updatesPage = {
-    title: "Updates and Help",
+    title: "Help and Support",
     sections: [
         {
             id: "updates",

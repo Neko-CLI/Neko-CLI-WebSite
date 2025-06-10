@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import {
-    KBarProvider,
     KBarPortal,
     KBarPositioner,
     KBarAnimator,
     KBarSearch,
     useMatches,
-    KBarResults,
     useKBar,
 } from "kbar";
 import { SearchIcon } from '../../static/icons/search';
@@ -18,16 +15,21 @@ import { scroolIntoView } from '../docs/pageLinks';
 import { pages } from '../docs/pages/pages';
 import { componentsMap } from '../docs/pages/pages';
 
+const normalizeLinkKey = (linkName) => {
+    return linkName
+        .replace(/ /g, "_");
+};
+
 export const actions = pages.flatMap(page => {
     const pageTitleKey = page.title.replaceAll(" ", "_");
 
     return [
         ...page.links.map(link => {
-            const linkKey = link.replaceAll(" ", "_");
+            const normalizedLinkKey = normalizeLinkKey(link);
             return {
-                id: link.toLowerCase(),
+                id: normalizedLinkKey,
                 name: link,
-                link: linkKey,
+                link: normalizedLinkKey,
                 type: "page",
                 page: pageTitleKey,
                 href: generateHref(page.title, link),
@@ -36,12 +38,19 @@ export const actions = pages.flatMap(page => {
         }),
 
         ...page.links.flatMap(link => {
-            const linkKey = link.replaceAll(" ", "_");
-            return componentsMap[pageTitleKey][linkKey].sections.map(section => ({
+            const normalizedLinkKey = normalizeLinkKey(link);
+
+            const componentPage = componentsMap[pageTitleKey]?.[normalizedLinkKey];
+
+            if (!componentPage || !componentPage.sections) {
+                return [];
+            }
+
+            return componentPage.sections.map(section => ({
                 id: section.id,
                 name: section.name,
                 page: pageTitleKey,
-                link: linkKey,
+                link: normalizedLinkKey,
                 keywords: link,
                 type: "section",
                 href: `${generateHref(page.title, link)}#${section.id}`,
@@ -69,7 +78,6 @@ function RenderResults({ setSelectedLink }) {
                             if (item.type === "section") {
                                 scroolIntoView(item.id)
                             }
-
                             query.toggle();
                         }}
                     >

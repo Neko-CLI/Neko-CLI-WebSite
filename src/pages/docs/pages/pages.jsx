@@ -6,6 +6,7 @@ import { projectInitializationPage } from "./commands/projectInitialization";
 import { scriptManagementPage } from "./commands/scriptManagement";
 import { dependencyManagementPage } from "./commands/dependencyManagement";
 import { dependencyAnalysisPage } from "./commands/analysis";
+import { advancedToolsPage } from "./commands/advanced"
 import { projectInsightsPage } from "./commands/projectInsights";
 import { cleanupPage } from "./commands/cleanup";
 import { updatesPage } from "./commands/updates";
@@ -24,12 +25,13 @@ export const pages = [
         title: "Commands",
         links: [
             "Initialization",
-            "Script management",
-            "Dependency management",
-            "Dependency analysis",
-            "Project insights",
+            "Script Management",
+            "Dependency Management",
+            "Dependency Analysis",
+            "Project Insights",
             "Cleanup",
-            "Help and support",
+            "Help and Support",
+            "Advanced and Security"
         ],
     }
 ];
@@ -43,11 +45,12 @@ export const componentsMap = {
     },
     Commands: {
         Initialization: projectInitializationPage,
-        Script_management: scriptManagementPage,
-        Dependency_management: dependencyManagementPage,
-        Dependency_analysis: dependencyAnalysisPage,
-        Project_insights: projectInsightsPage,
+        Script_Management: scriptManagementPage,
+        Dependency_Management: dependencyManagementPage,
+        Dependency_Analysis: dependencyAnalysisPage,
+        Project_Insights: projectInsightsPage,
         Cleanup: cleanupPage,
-        Help_and_support: updatesPage,
+        Help_and_Support: updatesPage,
+        Advanced_and_Security: advancedToolsPage
     }
 };
