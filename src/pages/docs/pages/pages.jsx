@@ -1,4 +1,5 @@
 import { introductionPage } from "./guide/introduction";
+import { nekoCliWindowsInstallation } from "./guide/installation"
 import { linuxInstallation} from "./guide/linuxInstallation";
 import { termuxInstallation} from "./guide/termuxInstallation";
 import { ishInstallation} from "./guide/iSHInstallation";
@@ -16,6 +17,7 @@ export const pages = [
         title: "Guide",
         links: [
             "Introduction",
+            "Windows Installation",
             "Linux Installation",
             "Termux Installation",
             "IOS Installation"
@@ -39,6 +41,7 @@ export const pages = [
 export const componentsMap = {
     Guide: {
         Introduction: introductionPage,
+        Windows_Installation: nekoCliWindowsInstallation,
         Linux_Installation: linuxInstallation,
         Termux_Installation: termuxInstallation,
         IOS_Installation: ishInstallation

@@ -72,14 +72,28 @@ export const ishInstallation = {
         <p>
           Once iSH is installed, open it. iSH emulates an Alpine Linux
           environment, so you'll use the `apk` package manager. First, update
-          your package lists and install Node.js (which includes npm) by running
-          these commands:
+          your package lists.
+        </p>
+        <p>
+          Instead of `nodejs npm`, we'll install `nodejs-current` which
+          typically includes npm and is a more up-to-date package for Alpine.
+          Run these commands:
           <br />
           <Code>apk update</Code>
           <br />
-          <Code>apk add nodejs npm</Code>
+          <Code>apk add nodejs-current</Code>
         </p>
-        <p>Verify your installations: `node -v` and `npm -v`.</p>
+        <p>
+          After installation, it's good practice to ensure `npm` is linked
+          correctly. Sometimes, even after installing `nodejs-current`, `npm` might
+          not be directly in your PATH. You can try to link it manually or just
+          proceed to the next step, as `npm` should be available with `nodejs-current`.
+        </p>
+        <p>
+          Verify your installations:
+          <Code>node -v</Code>
+          <Code>npm -v</Code>
+        </p>
 
         <h3>Installation:</h3>
         <p>Now, install Neko-CLI globally using npm:</p>
