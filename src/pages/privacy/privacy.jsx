@@ -1,4 +1,5 @@
 import Footer from "../components/footer";
+import NumberLine from '../components/numberline'
 export default function PrivacyPolicy() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-5xl rounded-2xl my-8">
@@ -353,6 +354,7 @@ export default function PrivacyPolicy() {
       <p className="text-sm text-gray-400 mt-12 text-center">
         Disclaimer: This is a standard privacy policy draft. It does not substitute professional legal advice. We strongly recommend consulting with a privacy law attorney to ensure your policy complies with all applicable laws and regulations for your business and jurisdiction (e.g., GDPR, CCPA, etc.). ⚠️⚖️
       </p>
+      <NumberLine />
       <Footer className="mt-5" />
     </div>
   );

@@ -1,6 +1,5 @@
-import { Accordion, AccordionItem, Link } from "@nextui-org/react";
 import Footer from "../components/footer";
-import { useState } from "react";
+import NumberLine from '../components/numberline'
 
 import { componentsMap, pages } from "./pages/pages";
 
@@ -21,6 +20,7 @@ export default function Docs({ selectedLink, setSelectedLink}) {
                     <article className="prose dark:prose-invert prose-base lg:pl-16 xl:px-16 w-full max-w-full">
                         <h1>{(componentsMap[selectedLink.page][selectedLink.link] || { title: "Error"}).title}</h1>
                         {(componentsMap[selectedLink.page][selectedLink.link] || { content: "Error"}).content}
+                        <NumberLine />
                         <Footer className="not-prose" />
                     </article>
 

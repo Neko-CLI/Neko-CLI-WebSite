@@ -1,4 +1,5 @@
 import Footer from "../components/footer";
+import NumberLine from '../components/numberline'
 export default function TermsOfServices() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-5xl rounded-2xl my-8">
@@ -206,6 +207,7 @@ export default function TermsOfServices() {
       <p className="text-sm text-gray-400 mt-12 text-center">
         Disclaimer: This is a standard terms and conditions draft. It does not substitute professional legal advice. We strongly recommend consulting with a legal professional to ensure your terms comply with all applicable laws and regulations for your business and jurisdiction. ⚠️⚖️
       </p>
+      <NumberLine />
       <Footer className="mt-5" />
     </div>
   );
