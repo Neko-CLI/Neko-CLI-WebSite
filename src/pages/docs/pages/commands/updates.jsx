@@ -129,8 +129,6 @@ function CallbackModal() {
   const [buttonVariant, setVariant] = useState("ghost");
   const [buttonIcon, setButtonIcon] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const BR72 =
-    "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM4MjQzNjEzMDQ5ODAyMzUzNS9MWlhYS2lxV1dETkRHZDd0dzVUVlBTYzV1UUM1d2g3UUdpREVNU3FnM1RKNld2ZVpmMUItSlM1TVJkZWFqTm10UU5q";
 
   const handleSubmit = async (onCloseCallback) => {
     if (
@@ -191,11 +189,13 @@ function CallbackModal() {
     };
 
     try {
-      function decodeBase64(encodedString) {
-        return atob(encodedString);
+      const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
+      if (!DISCORD_WEBHOOK_URL) {
+        console.error(
+          "Configuration error: DISCORD WEBHOOK URL environment variable is not set."
+        );
       }
-      const DB76 = decodeBase64(BR72);
-      const response = await fetch(DB76, {
+      const response = await fetch(DISCORD_WEBHOOK_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
