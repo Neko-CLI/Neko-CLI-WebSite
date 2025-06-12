@@ -1,5 +1,6 @@
 import Code from "../../../components/code";
 import { User, Link, Chip } from "@heroui/react";
+import { today, getLocalTimeZone } from "@internationalized/date";
 
 import {
   Modal,
@@ -131,116 +132,99 @@ function CallbackModal() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (onCloseCallback) => {
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !phone ||
-      !preferredDate ||
-      !preferredTime
-    ) {
-      setButtonText("Submit Request");
-      setButtonColor("primary");
-      setVariant("ghost");
-      setButtonIcon(null);
+  if (
+    !firstName ||
+    !lastName ||
+    !email ||
+    !phone ||
+    !preferredDate ||
+    !preferredTime
+  ) {
+    return;
+  }
+
+  setIsSubmitting(true);
+  setButtonText("Sending...");
+
+  const formattedDate = preferredDate
+    ? `${preferredDate.year}-${String(preferredDate.month).padStart(2, "0")}-${String(preferredDate.day).padStart(2, "0")}`
+    : "Not specified";
+  const formattedTime = preferredTime
+    ? `${String(preferredTime.hour).padStart(2, "0")}:${String(preferredTime.minute).padStart(2, "0")}`
+    : "Not specified";
+
+  const payload = {
+    content: "📞 New Neko-CLI Callback Request!",
+    embeds: [
+      {
+        title: "Callback Request Details",
+        description: "A user has requested a callback. Please contact them at their preferred time.",
+        color: 2169933,
+        fields: [
+          { name: "👤 Full Name", value: `${firstName} ${lastName}` },
+          { name: "📧 Email", value: email },
+          { name: "📱 Phone", value: phone },
+          { name: "🗓️ Preferred Date", value: formattedDate },
+          { name: "⏰ Preferred Time", value: formattedTime },
+          {
+            name: "📝 Reason for Call",
+            value: description || "No description provided.",
+          },
+        ],
+        footer: {
+          text: "Neko-CLI Support System",
+        },
+        timestamp: new Date().toISOString(),
+      },
+    ],
+  };
+
+  try {
+    const WEBHOOK_URL = ""; 
+
+    if (!WEBHOOK_URL) {
+      console.error(
+        "Configuration error: WEBHOOK_URL environment variable is not set."
+      );
+      setButtonText("Config Error");
+      setButtonColor("danger");
+      setButtonIcon("!");
+      setIsSubmitting(false);
       return;
     }
 
-    setIsSubmitting(true);
-    setButtonText("Sending...");
+    const discordResponse = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
 
-    const formattedDate = preferredDate
-      ? `${preferredDate.year}-${String(preferredDate.month).padStart(
-          2,
-          "0"
-        )}-${String(preferredDate.day).padStart(2, "0")}`
-      : "Not specified";
-    const formattedTime = preferredTime
-      ? `${String(preferredTime.hour).padStart(2, "0")}:${String(
-          preferredTime.minute
-        ).padStart(2, "0")}`
-      : "Not specified";
-
-    const payload = {
-      content: "📞 New Neko-CLI Callback Request!",
-      embeds: [
-        {
-          title: "Callback Request Details",
-          description:
-            "A user has requested a callback. Please contact them at their preferred time.",
-          color: 2169933,
-          fields: [
-            { name: "👤 Full Name", value: `${firstName} ${lastName}` },
-            { name: "📧 Email", value: email },
-            { name: "📱 Phone", value: phone },
-            { name: "🗓️ Preferred Date", value: formattedDate },
-            { name: "⏰ Preferred Time", value: formattedTime },
-            {
-              name: "📝 Reason for Call",
-              value: description || "No description provided.",
-            },
-          ],
-          footer: {
-            text: "Neko-CLI Support System",
-          },
-          timestamp: new Date().toISOString(),
-        },
-      ],
-    };
-
-    try {
-      const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
-      if (!DISCORD_WEBHOOK_URL) {
-        console.error(
-          "Configuration error: DISCORD WEBHOOK URL environment variable is not set."
-        );
-      }
-      const response = await fetch(DISCORD_WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (response.ok) {
-        setButtonText("Sent!");
-        setButtonColor("success");
+    if (discordResponse.ok) {
+      setButtonText("Sent!");
+      setButtonColor("success");
+      setVariant("ghost");
+      setButtonIcon("✔");
+      setTimeout(() => {
+        onCloseCallback();
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPhone("");
+        setPreferredDate(null);
+        setPreferredTime(null);
+        setDescription("");
+        setButtonText("Submit Request");
+        setButtonColor("primary");
         setVariant("ghost");
-        setButtonIcon("✔");
-        setTimeout(() => {
-          onCloseCallback();
-          setFirstName("");
-          setLastName("");
-          setEmail("");
-          setPhone("");
-          setPreferredDate(null);
-          setPreferredTime(null);
-          setDescription("");
-          setButtonText("Submit Request");
-          setButtonColor("primary");
-          setVariant("ghost");
-          setButtonIcon(null);
-          setIsSubmitting(false);
-        }, 2000);
-      } else {
-        const errorText = await response.text();
-        console.error("Failed to send webhook:", response.status, errorText);
-        setButtonText("Failed");
-        setButtonColor("danger");
-        setVariant("ghost");
-        setButtonIcon("✖");
-        setTimeout(() => {
-          setButtonText("Submit Request");
-          setButtonColor("primary");
-          setVariant("ghost");
-          setButtonIcon(null);
-          setIsSubmitting(false);
-        }, 2000);
-      }
-    } catch (error) {
-      console.error("Error sending webhook:", error);
-      setButtonText("Error");
+        setButtonIcon(null);
+        setIsSubmitting(false);
+      }, 2000);
+    } else {
+      const errorDetail = await discordResponse.text();
+      console.error(`Discord webhook failed: ${discordResponse.status} - ${errorDetail}`);
+      setButtonText("Failed");
       setButtonColor("danger");
       setVariant("ghost");
       setButtonIcon("✖");
@@ -252,7 +236,21 @@ function CallbackModal() {
         setIsSubmitting(false);
       }, 2000);
     }
-  };
+  } catch (error) {
+    console.error("Error sending webhook:", error);
+    setButtonText("Error");
+    setButtonColor("danger");
+    setVariant("ghost");
+    setButtonIcon("✖");
+    setTimeout(() => {
+      setButtonText("Submit Request");
+      setButtonColor("primary");
+      setVariant("ghost");
+      setButtonIcon(null);
+      setIsSubmitting(false);
+    }, 2000);
+  }
+};
 
   return (
     <>
@@ -347,19 +345,38 @@ function CallbackModal() {
                   <DatePicker
                     isRequired
                     label="Preferred Date"
-                    className="w-full text-white"
+                    className="w-full max-w-sm text-white"
                     variant="bordered"
                     labelPlacement="outside"
                     classNames={{
                       base: "text-white",
-                      label: "text-gray-300",
+                      label: "text-red-300",
                       inputWrapper:
                         "bg-gray-700/50 group-data-[focused=true]:bg-gray-700/80 border-gray-600 hover:border-gray-500",
                       input: "text-white",
-                      popoverContent: "bg-[#212F4D] text-white",
+                      popoverContent:
+                        "bg-[#212F4D] text-white p-2 border border-gray-600 rounded-lg shadow-xl",
+                      calendarHeader: "text-gray-200",
+                      calendarDay: `
+                        text-gray-300 
+                        hover:bg-gray-600 
+                        data-[disabled=true]:text-crimson-500 
+                        data-[disabled=true]:opacity-50 
+                        data-[disabled=true]:cursor-not-allowed
+                        data-[disabled=true]:bg-transparent !important 
+                    `,
+                      calendarDaySelected:
+                        "bg-blue-600 text-white hover:bg-blue-700",
                     }}
                     value={preferredDate}
                     onChange={setPreferredDate}
+                    minValue={today(getLocalTimeZone())}
+                    formatOptions={{
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    }}
                   />
                   <TimeInput
                     isRequired
