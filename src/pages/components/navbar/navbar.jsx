@@ -14,7 +14,7 @@ import {
     AccordionItem,
 } from "@nextui-org/react";
 
-import nekoCLILogo from '../../../static/logos/nekoCLILogo.png'
+import nekoCLILogo from '../../../static/logos/nekoCLILogo.png';
 import { SearchIcon } from "../../../static/icons/search";
 import { useLocation } from "react-router-dom";
 import { useKBar } from "kbar";
@@ -23,7 +23,7 @@ import { pages } from "../../docs/pages/pages";
 
 export default function NavBar({ selectedLink, setSelectedLink }) {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-    const [version, setVersion] = React.useState(false);
+    const [version, setVersion] = React.useState(null);
 
     const menuItems = [
         { name: 'Docs', link: '/docs', hasAccordion: true, accordion: <PageSelector selectedLink={selectedLink} setSelectedLink={setSelectedLink} pages={pages} isNavBar={true} /> },
@@ -34,19 +34,20 @@ export default function NavBar({ selectedLink, setSelectedLink }) {
     ];
 
     useEffect(() => {
-        const fetchDownloads = async () => {
+        const fetchVersion = async () => {
             try {
                 const info = await fetch(
                     "https://registry.npmjs.org/neko-cli/latest"
                 ).then((res) => res.json());
 
-                setVersion(info.version)
+                setVersion(info.version);
             } catch (error) {
-                console.error("Error fetching downloads data:", error);
+                console.error("Error fetching Neko-CLI version:", error);
+                setVersion('N/A');
             }
         };
 
-        fetchDownloads();
+        fetchVersion();
     }, []);
 
     const location = useLocation();
@@ -93,7 +94,7 @@ export default function NavBar({ selectedLink, setSelectedLink }) {
                         />
                         <div className="flex flex-col gap-0">
                             <span className="font-bold text-inherit text-lg">Neko-CLI</span>
-                            <span className="text-inherit text-small -mt-2">v{version}</span>
+                            {version && <span className="text-inherit text-small -mt-2">v{version}</span>}
                         </div>
                     </Link>
                 </NavbarBrand>
@@ -132,7 +133,6 @@ export default function NavBar({ selectedLink, setSelectedLink }) {
                 }
             </NavbarMenu>
 
-
             <NavbarContent as="div" className="items-center flex gap-12" justify="end">
                 <NavbarContent className="hidden lg:flex gap-6" justify="end">
                     {
@@ -154,7 +154,7 @@ export default function NavBar({ selectedLink, setSelectedLink }) {
                 >
                     <SearchIcon size={16} />
                     <span className="mr-2 pr-2">Search</span>
-                    <Kbd keys={["ctrl"]} className="rounded-full px-2 bg-content1">K</Kbd>
+                    <Kbd keys={["command"]} className="rounded-full px-2 bg-content1">k</Kbd>
                 </Button>
             </NavbarContent>
         </Navbar>

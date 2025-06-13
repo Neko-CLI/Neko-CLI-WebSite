@@ -17,7 +17,7 @@ import PrivacyPolicy from './pages/privacy/privacy';
 import TermsOfServices from './pages/tos/tos';
 import CookieConsentBanner from './pages/components/cookiesbanner';
 
-const GA_MEASUREMENT_ID = 'G-337952744';
+const GA_MEASUREMENT_ID = 'G-KPVZX13YJ4';
 
 function App() {
   const navigate = useNavigate();

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { FaUserAlt, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { Card, CardBody, Button, Skeleton } from "@heroui/react";
 import Footer from "../components/footer";
-import NumberLine from '../components/numberline'
 
 export default function Reviews() {
   const [loading, setLoading] = useState(true);
@@ -188,7 +187,6 @@ export default function Reviews() {
           </div>
         </>
       )}
-      <NumberLine />
       <Footer className="mt-20 w-full" />
     </div>
   );
