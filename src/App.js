@@ -1,6 +1,6 @@
 import './App.css';
 import { useNavigate, useHref, useLocation } from "react-router-dom";
-import { NextUIProvider } from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-ui/react";
 
 import NavBar from './pages/components/navbar/navbar';
 import Particles from './pages/components/particles';
@@ -50,22 +50,43 @@ function App() {
 
   useEffect(() => {
     if (hasCookieConsent && GA_MEASUREMENT_ID && GA_MEASUREMENT_ID !== 'G-337952744') {
+      // Prevent duplicate script loading
+      if (window.gtag) {
+        // If gtag is already defined, it means the script has been loaded.
+        // We can just send the page view event.
+        window.gtag('config', GA_MEASUREMENT_ID, {
+          'anonymize_ip': true,
+          'page_path': location.pathname + location.search
+        });
+        window.gtag('event', 'page_view', {
+          'page_location': window.location.href,
+          'page_path': location.pathname + location.search,
+          'page_title': document.title,
+          'send_to': GA_MEASUREMENT_ID
+        });
+        return;
+      }
+
       const script = document.createElement('script');
       script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
       script.async = true;
       document.head.appendChild(script);
 
       script.onload = () => {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){window.dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', GA_MEASUREMENT_ID, {
+        if (!window.dataLayer) {
+          window.dataLayer = [];
+        }
+        if (!window.gtag) {
+          function gtag(){window.dataLayer.push(arguments);}
+          window.gtag = gtag;
+        }
+        window.gtag('js', new Date());
+        window.gtag('config', GA_MEASUREMENT_ID, {
           'anonymize_ip': true,
           'page_path': location.pathname + location.search
         });
 
-        gtag('event', 'page_view', {
+        window.gtag('event', 'page_view', {
           'page_location': window.location.href,
           'page_path': location.pathname + location.search,
           'page_title': document.title,
@@ -76,8 +97,6 @@ function App() {
       return () => {
         if (script && document.head.contains(script)) {
           document.head.removeChild(script);
-          delete window.gtag;
-          delete window.dataLayer;
         }
       };
     }
