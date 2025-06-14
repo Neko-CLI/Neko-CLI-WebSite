@@ -1,6 +1,6 @@
 import './App.css';
 import { useNavigate, useHref, useLocation } from "react-router-dom";
-import { NextUIProvider } from "@nextui-ui/react";
+import { HeroUIProvider } from "@heroui/react";
 
 import NavBar from './pages/components/navbar/navbar';
 import Particles from './pages/components/particles';
@@ -103,7 +103,7 @@ function App() {
   }, [hasCookieConsent, location.pathname, location.search]);
 
   return (
-    <NextUIProvider navigate={navigate} useHref={useHref} className="overflow-auto h-[100vh] appContainer">
+    <HeroUIProvider navigate={navigate} useHref={useHref} className="overflow-auto h-[100vh] appContainer">
       <KBarProvider
         actions={actions}
         options={
@@ -141,7 +141,7 @@ function App() {
         </div>
         <CookieConsentBanner />
       </KBarProvider>
-    </NextUIProvider>
+    </HeroUIProvider>
   );
 }
 

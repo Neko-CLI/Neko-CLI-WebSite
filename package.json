@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@heroui/chip": "^2.2.15",
-    "@heroui/react": "^2.7.8",
+    "@heroui/react": "^2.7.10",
     "@internationalized/date": "^3.8.2",
     "@lordicon/react": "^1.10.1",
     "@nextui-org/react": "^2.6.5",
