@@ -180,7 +180,7 @@ function CallbackModal() {
   };
 
   try {
-    const WEBHOOK_URL = ""; 
+    const WEBHOOK_URL = process.env.REACT_APP_DISCORDWEBHOOK; 
 
     if (!WEBHOOK_URL) {
       console.error(
