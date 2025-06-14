@@ -35,7 +35,7 @@ export default function Footer({ className }) {
                 <a href="https://www.youtube.com/@Neko-CLI" target="_blank" rel="noopener noreferrer" aria-label="Neko-CLI on YouTube">
                     <FaYoutube size={14} className="text-primary-400 hover:text-primary-300 transition-colors duration-200" /> {}
                 </a>
-                <a href="https://discord.com/invite/5wuywh8zcb" target="_blank" rel="noopener noreferrer" aria-label="Neko-CLI on Discord">
+                <a href="https://ds.neko-cli.com/" target="_blank" rel="noopener noreferrer" aria-label="Neko-CLI on Discord">
                     <FaDiscord size={14} className="text-primary-400 hover:text-primary-300 transition-colors duration-200" /> {}
                 </a>
                 <a href="https://www.instagram.com/nekocliofficial/" target="_blank" rel="noopener noreferrer" aria-label="Neko-CLI on Instagram">
