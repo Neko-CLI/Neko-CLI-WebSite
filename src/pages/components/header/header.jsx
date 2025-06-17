@@ -325,7 +325,7 @@ export default function Header() {
               </p>
               <Code>npm i -g neko-cli</Code>
               <p className="text-base text-gray-400 mb-1">To verify run:</p>
-              <Code>neko help</Code>
+              <Code>meow help</Code>
             </Tab>
             <Tab key="yarn" title="yarn" className="text-center">
               <h1 className="text-xl font-bold m-0 text-primary-300 mb-2">
@@ -336,7 +336,7 @@ export default function Header() {
               </p>
               <Code>yarn global add neko-cli</Code>
               <p className="text-base text-gray-400 mb-1">To verify run:</p>
-              <Code>neko help</Code>
+              <Code>meow help</Code>
             </Tab>
           </Tabs>
         </div>
