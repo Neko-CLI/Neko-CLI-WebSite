@@ -5,7 +5,8 @@ import Code from "../code";
 import Feature from "./feature";
 import Sponsor from "../sponsor";
 import Icon from "../icon";
-
+import { SiReplit } from "react-icons/si";
+import { FaCat, FaLightbulb } from 'react-icons/fa'; 
 import chartIcon from "../../../static/animated/chartIcon.json";
 import categoryIcon from "../../../static/animated/categoryIcon.json";
 import compareIcon from "../../../static/animated/compareIcon.json";
@@ -288,10 +289,28 @@ export default function Header() {
 
           <div className="flex flex-col items-center">
             <h1 className="text-xl font-bold m-0 text-primary-300 my-5">
-              Neko CLI
-              <br />
-              The smarter way to manage Node.js.
-            </h1>
+        Neko CLI
+        <br />
+        <span className="flex items-center justify-center text-lg font-medium ">
+          <FaLightbulb className="mr-2 text-yellow-500" />
+          The smarter way to manage Node.js.
+          <FaCat className="ml-2 text-gray-500" />
+        </span>
+      </h1>
+            <Button
+              as="a"
+              className="font-bold mt-4"
+              color="primary"
+              href="https://replit.com/@Neko-CLI/Neko-CLI-Demo"
+              size="lg"
+              variant="ghost"
+              radius="full"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SiReplit  className="mr-2" />
+              Try the Demo on Replit
+            </Button>
           </div>
         </div>
 
