@@ -68,12 +68,12 @@ export const introductionPage = {
             </section>
 
             <section id="nekoRock">
-                <h2>🐾 neko.rock - The Native Package Manager of Neko CLI</h2>
+                <h2>🐾 deps.neko - The Native Package Manager of Neko CLI</h2>
                 <p>
-                    <strong>neko.rock</strong> is the beating heart ❤️ of Neko CLI—a lock file that tracks packages
+                    <strong>deps.neko</strong> is the beating heart ❤️ of Neko CLI—a lock file that tracks packages
                     and their versions for each project managed. It functions as a dedicated dependency manager,
                     much like `package.json` in npm, but with a fun feline twist. Every package added
-                    via Neko CLI is recorded in neko.rock, allowing you to easily manage your project's dependencies
+                    via Neko CLI is recorded in deps.neko, allowing you to easily manage your project's dependencies
                     with confidence.
                 </p>
                 <p>Neko-CLI provides advanced features for managing dependencies, including:</p>
