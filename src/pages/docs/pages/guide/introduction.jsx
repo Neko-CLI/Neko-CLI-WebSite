@@ -12,6 +12,10 @@ export const introductionPage = {
             name: "Key Features of Neko-CLI",
         },
         {
+            id: "vscodePlugin",
+            name: "VSCode Plugin for deps.neko",
+        },
+        {
             id: "documentation",
             name: "Documentation and Resources",
         },
@@ -118,6 +122,16 @@ export const introductionPage = {
                 </ul>
             </section>
 
+            <section id="vscodePlugin">
+                <h2>💻 VSCode Extension for deps.neko</h2>
+                <p>
+                    Enhance your development workflow with the official <strong>Neko-CLI VSCode extension</strong> for <strong>deps.neko</strong>! This plugin provides seamless integration, offering features like syntax highlighting, auto-completion, and direct access to Neko-CLI commands right within your Visual Studio Code environment. Manage your `deps.neko` file with even greater ease and efficiency.
+                </p>
+                <p>
+                    You can find the extension here: <Link isExternal href="https://marketplace.visualstudio.com/items?itemName=Neko-CLI.neko-cli-support">Neko-CLI Support for VSCode</Link> 🚀
+                </p>
+            </section>
+
             <section id="documentation">
                 <h2>📘 Documentation and Resources</h2>
                 <p>
@@ -143,9 +157,10 @@ export const introductionPage = {
                 <h2>🚀 Ready to Get Started?</h2>
                 <p>
                     For more information, updates, and detailed documentation, visit the
-                    <a href="https://neko-cli.com" target="_blank" rel="noopener noreferrer" className="text-link">
+                    <Link isExternal href="https://neko-cli.com" className="text-link">
                         official Neko-CLI website
-                    </a>.
+                    </Link>
+                    .
                     <strong>Get ready to streamline your development process with Neko-CLI! 🐾</strong>
                 </p>
             </section>
