@@ -30,6 +30,7 @@ export default function CookieConsentBanner() {
         setNecessaryCookie();
 
     }, [onOpen, location.pathname]);
+
     const setNecessaryCookie = () => {
         document.cookie = `session_preference=true; max-age=31536000; path=/; SameSite=Lax`;
     };
@@ -59,25 +60,25 @@ export default function CookieConsentBanner() {
                 {() => (
                     <>
                         <ModalHeader className="flex flex-col gap-1 text-lg font-bold text-white">
-                            La Tua Privacy Conta ✨
+                            Your Privacy Matters ✨
                         </ModalHeader>
                         <ModalBody className="text-gray-300">
                             <p>
-                                Questo sito web utilizza cookie per migliorare la tua esperienza di navigazione e per l'analisi.
-                                I cookie strettamente necessari sono già attivi e sono essenziali per la funzionalità del sito. 🍪
+                                This website uses cookies to enhance your Browse experience and for analytics.
+                                Strictly necessary cookies are already active and are essential for site functionality. 🍪
                             </p>
                             <p className="mt-2">
-                                Cliccando "Accetta tutto", acconsenti all'uso di cookie analitici che ci aiutano a capire
-                                come utilizzi il nostro sito e a migliorarlo. 📈
+                                By clicking "Accept All", you consent to the use of analytical cookies that help us understand
+                                how you use our site and improve it. 📈
                             </p>
                             <p className="mt-2">
-                                Puoi leggere di più sulle nostre pratiche relative ai dati nella nostra
+                                You can read more about our data practices in our
                                 <a href="/privacy" className="text-blue-400 hover:text-blue-300 ml-1 underline">
-                                    Politica sulla Privacy 🔒
+                                    Privacy Policy 🔒
                                 </a>
-                                e nei nostri
+                                and our
                                 <a href="/tos" className="text-blue-400 hover:text-blue-300 ml-1 underline">
-                                    Termini di Servizio 📜
+                                    Terms of Service 📜
                                 </a>.
                             </p>
                         </ModalBody>
@@ -98,7 +99,7 @@ export default function CookieConsentBanner() {
                                 endContent={<span className="text-green">✅</span>}
                                 className="px-6 py-2 font-semibold rounded-lg shadow-md transition duration-300 ease-in-out"
                             >
-                                Accetta Tutto
+                                Accept All
                             </Button>
                         </ModalFooter>
                     </>
